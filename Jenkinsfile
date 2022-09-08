@@ -16,17 +16,17 @@ pipeline{
         }
          stage('terraform plan'){
             steps{
-                sh "terraform plan -var 'region=${params.region}'"
+                sh "terraform plan --auto-approve"
             }
         }
          stage('terraform apply'){
             steps{
-                 sh "terraform apply -var 'region=${params.region}' --auto-approve"
+                 sh "terraform apply --auto-approve"
             }
         }
         stage('terraform destroy'){
             steps{
-              sh "terraform destroy -var 'region=${params.region}' --auto-approve"
+              sh "terraform destroy --auto-approve"
             }
         }
     }
